@@ -85,24 +85,17 @@ namespace SetParentDemo
         {
             var inputInt32 = Convert.ToInt32(InputTextBox.Text, 16);
             IntPtr inputPtr = (IntPtr)inputInt32;
-            var helper = new WindowInteropHelper(this);
-            var currentInPtr = helper.Handle;
+            var currentInPtr = new WindowInteropHelper(this).Handle;
 
-            //设置当前窗口。有UIACCESS的窗口，要去除WS_CHILD
-            //int exStyle = GetWindowLong(currentInPtr, GWL_EXSTYLE);
-            //exStyle &= ~(int)WindowStyles.WS_CHILD;
-            //SetWindowLong(currentInPtr, GWL_EXSTYLE, exStyle);
-
-            var aaa = SetParent(inputPtr, currentInPtr);
-            MessageBox.Show($"SetParent Result:{aaa}");
+            var result = SetParent(inputPtr, currentInPtr);
+            MessageBox.Show($"SetParent Result:{result}");
         }
 
         private void AddParentWindow_OnClick(object sender, RoutedEventArgs e)
         {
             var inputInt32 = Convert.ToInt32(InputTextBox.Text, 16);
             IntPtr inputPtr = (IntPtr)inputInt32;
-            var helper = new WindowInteropHelper(this);
-            var currentInPtr = helper.Handle;
+            var currentInPtr = new WindowInteropHelper(this).Handle;
 
             //int exStyle = GetWindowLong(currentInPtr, GWL_EXSTYLE);
             //exStyle &= ~(int)WindowStyles.WS_CHILD;
